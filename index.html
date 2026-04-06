@@ -7,84 +7,70 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&family=Inter:wght@300;500;800&display=swap');
-
-        :root {
-            --red: #ff0000;
-            --bg: #050505;
-        }
-
+        :root { --red: #ff0000; --bg: #050505; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background: var(--bg); color: white; font-family: 'Inter', sans-serif; overflow-x: hidden; }
-
-        /* --- ESKİ SEVDİĞİN TASARIM --- */
-        nav {
-            position: fixed; top: 0; width: 100%; padding: 20px 8%;
-            display: flex; justify-content: space-between; align-items: center;
-            background: rgba(0,0,0,0.9); z-index: 1000;
-        }
-        .nav-links a { color: white; text-decoration: none; margin-left: 20px; font-size: 12px; font-weight: 800; text-transform: uppercase; }
-
-        .hero {
-            height: 100vh; display: flex; flex-direction: column; justify-content: center;
-            align-items: center; text-align: center; background: radial-gradient(circle, #200000 0%, #050505 100%);
-        }
-        .hero h1 { font-family: 'Syncopate'; font-size: 80px; letter-spacing: 10px; }
+        body { background: var(--bg); color: white; font-family: 'Inter', sans-serif; }
         
-        .btn-join { 
-            padding: 20px 40px; background: var(--red); color: white; text-decoration: none;
-            font-weight: 900; margin-top: 20px; border-radius: 5px; transition: 0.3s;
-        }
-        .btn-join:hover { transform: scale(1.1); box-shadow: 0 0 20px var(--red); }
+        /* ESKİ NAVBAR */
+        nav { position: fixed; top: 0; width: 100%; padding: 25px 8%; display: flex; justify-content: space-between; align-items: center; background: rgba(0,0,0,0.8); backdrop-filter: blur(10px); z-index: 1000; }
+        .nav-links a { color: white; text-decoration: none; margin-left: 25px; font-size: 12px; font-weight: 800; letter-spacing: 2px; }
 
+        /* ESKİ HERO ALANI */
+        .hero { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; background: radial-gradient(circle, #1a0000 0%, #050505 100%); }
+        .hero h1 { font-family: 'Syncopate'; font-size: 90px; letter-spacing: 15px; margin-bottom: 10px; }
+        .hero p { letter-spacing: 5px; color: #555; text-transform: uppercase; }
+        .btn-join { margin-top: 40px; padding: 20px 50px; background: var(--red); color: white; text-decoration: none; font-weight: 900; border-radius: 5px; transition: 0.3s; }
+        .btn-join:hover { transform: scale(1.1); box-shadow: 0 0 30px var(--red); }
+
+        /* ESKİ KURUCU KARTLARI */
         .container { padding: 100px 10%; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
-        .card { background: #111; padding: 40px; text-align: center; border-radius: 10px; border: 1px solid #222; }
-        .card i { font-size: 40px; color: var(--red); margin-bottom: 20px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+        .card { background: #0a0a0a; padding: 60px 40px; text-align: center; border: 1px solid #151515; border-radius: 5px; }
+        .card i { font-size: 45px; color: var(--red); margin-bottom: 25px; }
+        .card h3 { font-family: 'Syncopate'; font-size: 18px; }
 
-        /* WIDGET ALANI */
-        .widget-box { margin-top: 50px; border: 1px solid #333; border-radius: 10px; overflow: hidden; }
+        /* WIDGETBOT (EN ALTA EK) */
+        .live-chat { margin-top: 50px; border: 1px solid #222; border-radius: 10px; overflow: hidden; }
     </style>
 </head>
 <body>
 
-    <nav>
-        <div style="font-family: 'Syncopate'; font-weight: 700; color: var(--red);">BEDDUA</div>
-        <div class="nav-links">
-            <a href="#home">ANA SAYFA</a>
-            <a href="#founders">EKİP</a>
-            <a href="#live">CANLI</a>
-        </div>
-    </nav>
+<nav>
+    <div style="font-family: 'Syncopate'; font-weight: 700; color: var(--red); font-size: 20px;">BEDDUA</div>
+    <div class="nav-links">
+        <a href="#home">HOME</a>
+        <a href="#founders">FOUNDERS</a>
+    </div>
+</nav>
 
-    <section class="hero" id="home">
-        <h1>BEDDUA</h1>
-        <p>Gölge gibi gelir, fırtına gibi gideriz.</p>
-        <a href="https://discord.gg/pGwxsx2Y" class="btn-join">KLANA KATIL</a>
-    </section>
+<section class="hero" id="home">
+    <h1>BEDDUA</h1>
+    <p>Gölge gibi gelir, fırtına gibi gideriz.</p>
+    <a href="https://discord.gg/pGwxsx2Y" class="btn-join">KLANA KATIL</a>
+</section>
 
-    <div class="container" id="founders">
-        <h2 style="text-align:center; margin-bottom:40px; font-family:'Syncopate';">KURUCULAR</h2>
-        <div class="grid">
-            <div class="card"><i class="fas fa-crown"></i><h3>hsmynova_</h3><p>ASIL KURUCU</p></div>
-            <div class="card"><i class="fas fa-handshake"></i><h3>rolezoffical</h3><p>ORTAK</p></div>
-            <div class="card"><i class="fas fa-shield-alt"></i><h3>naqauel.</h3><p>STRATEJİ</p></div>
-        </div>
+<div class="container" id="founders">
+    <h2 style="text-align:center; font-family:'Syncopate'; margin-bottom:50px; letter-spacing:10px;">KURUCULAR</h2>
+    <div class="grid">
+        <div class="card"><i class="fas fa-crown"></i><h3>hsmynova_</h3><p style="color:#444; margin-top:10px;">FOUNDER</p></div>
+        <div class="card"><i class="fas fa-handshake"></i><h3>rolezoffical</h3><p style="color:#444; margin-top:10px;">PARTNER</p></div>
+        <div class="card"><i class="fas fa-shield-alt"></i><h3>naqauel.</h3><p style="color:#444; margin-top:10px;">STRATEGY</p></div>
     </div>
 
-    <div class="container" id="live">
-        <h2 style="text-align:center; margin-bottom:20px; font-family:'Syncopate';">CANLI KOMUTA</h2>
-        <div class="widget-box">
-            <widgetbot
-                server="1457837923561898049"
-                channel="1476151928068243578"
-                width="100%"
-                height="500"
-            ></widgetbot>
-        </div>
+    <div class="live-chat" style="margin-top: 100px;">
+        <h3 style="text-align:center; font-family:'Syncopate'; margin-bottom:20px; font-size:14px; color:var(--red);">CANLI KOMUTA MERKEZİ</h3>
+        <widgetbot
+            server="1457837923561898049"
+            channel="1476151928068243578"
+            width="100%"
+            height="500"
+        ></widgetbot>
     </div>
+</div>
 
-    <footer style="text-align:center; padding:40px; color:#444;">BEDDUA ELITE &copy; 2026</footer>
+<footer style="text-align:center; padding:50px; color:#222; font-size:10px; letter-spacing:5px;">BEDDUA ELITE &copy; 2026</footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/@widgetbot/html-embed"></script>
+<script src="https://cdn.jsdelivr.net/npm/@widgetbot/html-embed"></script>
+
 </body>
 </html>
