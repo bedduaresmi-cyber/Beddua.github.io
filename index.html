@@ -10,7 +10,6 @@
 
         :root {
             --red: #ff0000;
-            --dark-red: #8b0000;
             --bg: #050505;
             --card-bg: rgba(10, 10, 10, 0.95);
         }
@@ -18,34 +17,38 @@
         * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
         body { background: var(--bg); color: white; font-family: 'Inter', sans-serif; overflow-x: hidden; }
 
-        /* --- YENİ GİRİŞ ANİMASYONU --- */
+        /* --- SİNEMATİK GİRİŞ --- */
         #preloader {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: #000; display: flex; justify-content: center; align-items: center;
-            z-index: 9999; transition: all 1s cubic-bezier(0.19, 1, 0.22, 1);
+            z-index: 9999; transition: all 1.2s cubic-bezier(0.19, 1, 0.22, 1);
         }
         .reveal-text {
             font-family: 'Syncopate'; font-size: clamp(30px, 8vw, 60px); font-weight: 700;
             color: white; letter-spacing: 20px; text-transform: uppercase;
-            animation: reveal 1.5s ease-in-out forwards;
-            opacity: 0; transform: scale(1.2);
+            animation: reveal 1.8s ease-in-out forwards;
+            opacity: 0; transform: scale(1.3);
         }
         @keyframes reveal {
-            0% { opacity: 0; transform: scale(1.5); filter: blur(20px); }
+            0% { opacity: 0; transform: scale(1.6); filter: blur(30px); }
             100% { opacity: 1; transform: scale(1); filter: blur(0); }
         }
-        .preloader-hidden { opacity: 0; visibility: hidden; transform: translateY(-100%); }
+        .preloader-hidden { opacity: 0; visibility: hidden; transform: scale(1.1); }
 
-        /* --- NAVIGATION --- */
+        /* --- NAVBAR --- */
         nav {
             position: fixed; top: 0; width: 100%; padding: 20px 8%;
             display: flex; justify-content: space-between; align-items: center;
-            background: rgba(0,0,0,0.9); backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(255,0,0,0.2); z-index: 1000;
+            background: rgba(0,0,0,0.95); backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(255,0,0,0.3); z-index: 1000;
         }
-        .logo { font-family: 'Syncopate'; font-weight: 700; color: var(--red); font-size: 22px; letter-spacing: 2px; }
-        .nav-links a { color: #aaa; text-decoration: none; margin-left: 25px; font-size: 11px; letter-spacing: 2px; font-weight: 700; text-transform: uppercase; transition: 0.3s; }
-        .nav-links a:hover { color: var(--red); text-shadow: 0 0 10px var(--red); }
+        .logo { font-family: 'Syncopate'; font-weight: 700; color: var(--red); font-size: 22px; letter-spacing: 3px; }
+        .nav-right { display: flex; align-items: center; }
+        .nav-links a { color: #888; text-decoration: none; margin-left: 20px; font-size: 10px; letter-spacing: 2px; font-weight: 800; text-transform: uppercase; transition: 0.3s; }
+        .nav-links a:hover { color: var(--red); }
+        .nav-social { margin-left: 30px; padding-left: 30px; border-left: 1px solid #222; }
+        .nav-social a { color: white; margin-left: 15px; font-size: 18px; transition: 0.3s; }
+        .nav-social a:hover { color: var(--red); transform: translateY(-3px); }
 
         /* --- HERO --- */
         .hero {
@@ -53,51 +56,48 @@
             align-items: center; text-align: center; position: relative;
             background: radial-gradient(circle at center, #1a0000 0%, #050505 100%);
         }
-        .hero h1 { font-family: 'Syncopate'; font-size: clamp(50px, 12vw, 120px); letter-spacing: clamp(10px, 3vw, 25px); margin-bottom: 15px; }
-        .hero p { color: #666; letter-spacing: 8px; font-size: clamp(10px, 2vw, 16px); text-transform: uppercase; margin-bottom: 40px; }
+        .hero h1 { font-family: 'Syncopate'; font-size: clamp(50px, 12vw, 120px); letter-spacing: clamp(10px, 3vw, 25px); margin-bottom: 15px; text-shadow: 0 0 20px var(--red); }
+        .hero p { color: #555; letter-spacing: 10px; font-size: 12px; text-transform: uppercase; margin-bottom: 40px; }
 
         .btn-main { 
             padding: 22px 60px; background: var(--red); color: white; text-decoration: none;
             font-weight: 900; letter-spacing: 4px; border-radius: 2px; transition: 0.5s;
             border: none; cursor: pointer; display: inline-block;
         }
-        .btn-main:hover { background: white; color: black; box-shadow: 0 0 50px white; transform: translateY(-3px); }
+        .btn-main:hover { background: white; color: black; box-shadow: 0 0 50px white; transform: translateY(-5px); }
 
-        /* --- SOSYAL MEDYA BUTONLARI --- */
-        .social-links { margin-top: 25px; display: flex; gap: 30px; justify-content: center; }
-        .social-links a { color: #555; font-size: 24px; transition: 0.3s; }
-        .social-links a:hover { color: var(--red); transform: scale(1.2); filter: drop-shadow(0 0 10px var(--red)); }
-
-        /* --- SECTION GENEL --- */
+        /* --- SECTIONS --- */
         .container { padding: 120px 10%; position: relative; }
-        .section-title { font-family: 'Syncopate'; text-align: center; font-size: 30px; margin-bottom: 80px; letter-spacing: 10px; color: #fff; }
+        .section-title { font-family: 'Syncopate'; text-align: center; font-size: 28px; margin-bottom: 80px; letter-spacing: 12px; color: #fff; }
         .section-title span { color: var(--red); }
 
         /* --- FOUNDERS --- */
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; }
         .card { 
             background: var(--card-bg); padding: 60px 40px; border: 1px solid #1a1a1a; 
-            text-align: center; transition: 0.6s; border-radius: 4px;
+            text-align: center; transition: 0.6s; border-radius: 5px; position: relative;
         }
-        .card:hover { transform: translateY(-15px); border-color: var(--red); box-shadow: 0 20px 40px rgba(255,0,0,0.1); }
-        .card i { font-size: 50px; color: var(--red); margin-bottom: 25px; }
-        .card h3 { font-family: 'Syncopate'; font-size: 22px; margin-bottom: 10px; color: #fff; }
-        .card .role-desc { color: #666; font-size: 12px; line-height: 1.6; margin-top: 10px; font-style: italic; }
+        .card:hover { border-color: var(--red); transform: translateY(-10px); box-shadow: 0 15px 30px rgba(255,0,0,0.1); }
+        .card i { font-size: 45px; color: var(--red); margin-bottom: 25px; }
+        .card h3 { font-family: 'Syncopate'; font-size: 20px; margin-bottom: 10px; color: #fff; }
+        .card .role-tag { color: var(--red); font-size: 10px; font-weight: 900; letter-spacing: 3px; display: block; margin-bottom: 15px; }
+        .card p { color: #666; font-size: 13px; line-height: 1.6; font-style: italic; }
 
         /* --- RULES --- */
-        .rules-container { max-width: 800px; margin: 0 auto; display: grid; gap: 20px; }
-        .rule-item { background: #080808; padding: 30px; border-left: 4px solid var(--red); transition: 0.3s; display: flex; align-items: center; }
+        .rule-item { background: #080808; padding: 30px; border-left: 4px solid var(--red); margin-bottom: 15px; transition: 0.3s; display: flex; align-items: center; }
         .rule-item:hover { background: #111; transform: translateX(10px); }
-        .rule-num { font-family: 'Syncopate'; font-size: 20px; color: var(--red); margin-right: 25px; }
+        .rule-num { font-family: 'Syncopate'; font-size: 18px; color: var(--red); margin-right: 25px; }
 
-        /* --- WIDGET & FORM --- */
-        .widget-box { background: #000; border: 1px solid #111; border-radius: 8px; overflow: hidden; }
+        /* --- JOIN & SOCIAL --- */
         .form-box { max-width: 700px; margin: 0 auto; background: #080808; padding: 50px; border: 1px solid #111; }
         input, textarea { width: 100%; background: #000; border: 1px solid #222; padding: 18px; color: white; margin-bottom: 20px; font-family: inherit; }
-
-        footer { padding: 80px 20px; text-align: center; border-top: 1px solid #111; font-size: 11px; color: #333; letter-spacing: 5px; }
+        
+        .social-footer { margin-top: 40px; text-align: center; border-top: 1px solid #111; padding-top: 30px; }
+        .social-footer a { color: #444; font-size: 30px; margin: 0 20px; transition: 0.4s; }
+        .social-footer a:hover { color: var(--red); filter: drop-shadow(0 0 15px var(--red)); transform: scale(1.2); }
 
         #particles-js { position: absolute; width: 100%; height: 100%; top: 0; left: 0; z-index: 1; pointer-events: none; }
+        footer { padding: 60px; text-align: center; font-size: 10px; color: #222; letter-spacing: 5px; }
     </style>
 </head>
 <body>
@@ -106,12 +106,17 @@
 
     <nav>
         <div class="logo">BEDDUA<span style="color:white">.</span></div>
-        <div class="nav-links">
-            <a href="#home">Home</a>
-            <a href="#founders">Founders</a>
-            <a href="#rules">Rules</a>
-            <a href="#live">Live</a>
-            <a href="#join">Join</a>
+        <div class="nav-right">
+            <div class="nav-links">
+                <a href="#home">Home</a>
+                <a href="#founders">Founders</a>
+                <a href="#live">Live</a>
+                <a href="#join">Join</a>
+            </div>
+            <div class="nav-social">
+                <a href="https://discord.gg/pGwxsx2Y" target="_blank"><i class="fab fa-discord"></i></a>
+                <a href="https://www.youtube.com/@Musashi-Miyamato" target="_blank"><i class="fab fa-youtube"></i></a>
+            </div>
         </div>
     </nav>
 
@@ -120,7 +125,7 @@
         <div style="position: relative; z-index: 2;">
             <h1>BEDDUA</h1>
             <p>Sarsılmaz Sadakat, Ebedi Hüküm.</p>
-            <a href="#join" class="btn-main">BAŞVURU YAP</a>
+            <a href="#join" class="btn-main">KLANA KATIL</a>
         </div>
     </section>
 
@@ -130,56 +135,48 @@
             <div class="card">
                 <i class="fas fa-crown"></i>
                 <h3>hsmynova_</h3>
-                <div style="color:red; font-size:10px; font-weight:900; letter-spacing:2px;">FOUNDER</div>
-                <p class="role-desc">Bu kalenin mimarı, Beddua'nın asıl gücü onun vizyonu sayesinde var.</p>
+                <span class="role-tag">FOUNDER</span>
+                <p>Beddua'nın temelleri onun vizyonu sayesinde atıldı, klanın asıl mimarı.</p>
             </div>
             <div class="card">
                 <i class="fas fa-handshake"></i>
                 <h3>rolezoffical</h3>
-                <div style="color:red; font-size:10px; font-weight:900; letter-spacing:2px;">PARTNER</div>
-                <p class="role-desc">Sarsılmaz desteği ve ortaklığı sayesinde cephemiz her zaman dik.</p>
+                <span class="role-tag">PARTNER</span>
+                <p>Onun sarsılmaz sadakati ve desteği sayesinde bu kale asla yıkılmaz.</p>
             </div>
             <div class="card">
                 <i class="fas fa-shield-alt"></i>
                 <h3>naqauel.</h3>
-                <div style="color:red; font-size:10px; font-weight:900; letter-spacing:2px;">STRATEGY</div>
-                <p class="role-desc">Zekası ve planları sayesinde Beddua asla mağlubiyet yüzü görmez.</p>
+                <span class="role-tag">STRATEGY</span>
+                <p>Savaş meydanındaki keskin zekası ve planları sayesinde zafer kaçınılmaz.</p>
             </div>
         </div>
     </div>
 
-    <div class="container" id="rules" style="background: #030303;">
-        <h2 class="section-title">KANUNLAR<span>.</span></h2>
-        <div class="rules-container">
-            <div class="rule-item"><span class="rule-num">01</span><span>Klan içi huzur kutsaldır, bozmaya cüret eden bedelini öder.</span></div>
-            <div class="rule-item"><span class="rule-num">02</span><span>Savaş anında emirlere itaat, zaferin anahtarıdır.</span></div>
-            <div class="rule-item"><span class="rule-num">03</span><span>Müttefiklere saygı, düşmana ise acımasız merhamet.</span></div>
-        </div>
-    </div>
-
-    <div class="container" id="live">
-        <h2 class="section-title">KOMUTA MERKEZİ<span>.</span></h2>
-        <div class="widget-box">
+    <div class="container" id="live" style="background: #030303;">
+        <h2 class="section-title">COMMAND CENTER<span>.</span></h2>
+        <div style="border: 2px solid #111; border-radius: 10px; overflow: hidden;">
             <widgetbot server="1457837923561898049" channel="1489329848932499478" width="100%" height="600"></widgetbot>
         </div>
     </div>
 
-    <div class="container" id="join" style="background: #030303;">
-        <h2 class="section-title">KATILIM<span>.</span></h2>
+    <div class="container" id="join">
+        <h2 class="section-title">RECRUITMENT<span>.</span></h2>
         <div class="form-box">
-            <input type="text" id="mcName" placeholder="Minecraft Kullanıcı Adı">
+            <input type="text" id="mcName" placeholder="Minecraft Nickname">
             <input type="text" id="discordTag" placeholder="Discord Adresi">
-            <textarea id="feda" rows="4" placeholder="Beddua için neleri göze alırsın?"></textarea>
+            <textarea id="feda" rows="4" placeholder="Beddua için neleri feda edersin?"></textarea>
             <button onclick="klanaBasvur()" class="btn-main" id="sendBtn" style="width:100%;">GÖNDER</button>
             
-            <div class="social-links">
-                <a href="https://discord.gg/pGwxsx2Y" target="_blank" title="Discord"><i class="fab fa-discord"></i></a>
-                <a href="https://www.youtube.com/@Musashi-Miyamato" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
+            <div class="social-footer">
+                <p style="font-size: 10px; color: #333; margin-bottom: 20px; letter-spacing: 2px;">RESMİ KANALLARIMIZ</p>
+                <a href="https://discord.gg/pGwxsx2Y" target="_blank"><i class="fab fa-discord"></i></a>
+                <a href="https://www.youtube.com/@Musashi-Miyamato" target="_blank"><i class="fab fa-youtube"></i></a>
             </div>
         </div>
     </div>
 
-    <footer>BEDDUA ELITE &copy; 2026 | GÖLGELERİN EFENDİLERİ</footer>
+    <footer>BEDDUA ELITE &copy; 2026 | THE SHADOWS WILL REMEMBER</footer>
 
     <script src="https://cdn.jsdelivr.net/npm/@widgetbot/html-embed"></script>
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
@@ -190,12 +187,12 @@
 
         particlesJS('particles-js', {
             "particles": {
-                "number": { "value": 60 },
+                "number": { "value": 50 },
                 "color": { "value": "#ff0000" },
                 "shape": { "type": "circle" },
                 "opacity": { "value": 0.4 },
                 "size": { "value": 2 },
-                "line_linked": { "enable": true, "distance": 150, "color": "#ff0000", "opacity": 0.2, "width": 1 },
+                "line_linked": { "enable": true, "distance": 150, "color": "#ff0000", "opacity": 0.15, "width": 1 },
                 "move": { "enable": true, "speed": 1.5 }
             }
         });
@@ -208,9 +205,9 @@
             if(!mc || !dc || !feda) return alert("Eksik bilgi!");
             const btn = document.getElementById('sendBtn');
             btn.disabled = true; btn.innerText = "İLETİLİYOR...";
-            const payload = { embeds: [{ title: "⚔️ YENİ ADAY!", color: 16711680, fields: [{ name: "👤 MC", value: mc, inline: true }, { name: "🆔 DC", value: dc, inline: true }, { name: "📜 Mesaj", value: feda }] }] };
+            const payload = { embeds: [{ title: "⚔️ ADAY GELDİ!", color: 16711680, fields: [{ name: "👤 MC", value: mc, inline: true }, { name: "🆔 DC", value: dc, inline: true }, { name: "📜 Mesaj", value: feda }] }] };
             await fetch(webhookURL, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
-            alert("Başvurun iletildi!"); location.reload();
+            alert("İletildi!"); location.reload();
         }
     </script>
 </body>
