@@ -93,10 +93,6 @@
         
         #particles-js { position: absolute; width: 100%; height: 100%; top: 0; left: 0; z-index: 1; pointer-events: none; }
         footer { padding: 50px; text-align: center; font-size: 10px; color: #333; letter-spacing: 4px; border-top: 1px solid #111; }
-
-        /* --- AI CHAT ÖZEL --- */
-        #chat-display::-webkit-scrollbar { width: 3px; }
-        #chat-display::-webkit-scrollbar-thumb { background: var(--red); }
     </style>
 </head>
 <body>
@@ -175,19 +171,6 @@
         </div>
     </div>
 
-    <div class="container" id="ai-chat" style="padding-top: 0; padding-bottom: 50px;">
-        <h2 class="section-title">BEDDUA <span>AI</span></h2>
-        <div class="form-container" style="border-top: 2px solid var(--red);">
-            <div id="chat-display" style="height: 250px; overflow-y: auto; margin-bottom: 20px; padding: 15px; background: #000; border: 1px solid #111; font-size: 13px; line-height: 1.6; display: flex; flex-direction: column; gap: 12px; font-family: 'Inter';">
-                <div style="color: #444; font-style: italic; letter-spacing: 1px;">[SİSTEM]: KONSEY YAPAY ZEKASI ÇEVRİMİÇİ.</div>
-            </div>
-            <div style="display: flex; gap: 10px;">
-                <input type="text" id="ai-input" placeholder="Yapay zekaya bir şey sor..." style="margin-bottom: 0;">
-                <button onclick="aiSorgu()" class="btn-hero" id="aiBtn" style="width: auto; padding: 0 25px; margin: 0; font-size: 11px; letter-spacing: 2px;">SOR</button>
-            </div>
-        </div>
-    </div>
-
     <div class="container" id="katil">
         <h2 class="section-title">KATILIM<span>.</span></h2>
         <div class="form-container">
@@ -217,7 +200,6 @@
             }
         });
 
-        // MEVCUT KLAN BAŞVURU SİSTEMİ (HİÇ DOKUNULMADI)
         async function klanaBasvur() {
             const webhookURL = "https://discord.com/api/webhooks/1490710472113258509/vT_WhugfRkyOTtgpMdLcIKm4zWi9qeVWdPyh0Sbh8pTD9wq4ASMmTis5SXAyWNf7RlCS";
             const mc = document.getElementById('mcName').value;
@@ -227,47 +209,14 @@
             const btn = document.getElementById('sendBtn');
             btn.disabled = true; btn.innerText = "İLETİLİYOR...";
             const payload = { embeds: [{ title: "⚔️ YENİ BAŞVURU", color: 16711680, fields: [{ name: "👤 MC", value: mc, inline: true }, { name: "🆔 DC", value: dc, inline: true }, { name: "📜 Mesaj", value: feda }] }] };
-            await fetch(webhookURL, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
-            alert("İletildi!"); location.reload();
-        }
-
-        // YENİ AI SORGULAMA SİSTEMİ
-        async function aiSorgu() {
-            const input = document.getElementById('ai-input');
-            const display = document.getElementById('chat-display');
-            const btn = document.getElementById('aiBtn');
-            const userMsg = input.value;
-
-            if (!userMsg) return;
-
-            display.innerHTML += `<div style="color: white; border-right: 2px solid var(--red); padding-right: 10px; text-align: right;"><span style="color: var(--red); font-weight: 900; font-size: 10px; letter-spacing: 1px;">SADIK:</span><br>${userMsg}</div>`;
-            input.value = "";
-            display.scrollTop = display.scrollHeight;
-
-            btn.disabled = true;
-            btn.innerText = "...";
-
             try {
-                const response = await fetch("https://beddua221212.bedduaresmi.workers.dev", {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ prompt: userMsg })
-                });
-
-                const data = await response.json();
-                display.innerHTML += `<div style="color: #bbb; border-left: 2px solid #333; padding-left: 10px;"><span style="color: #666; font-weight: 900; font-size: 10px; letter-spacing: 1px;">KONSEY AI:</span><br>${data.response}</div>`;
-            } catch (error) {
-                display.innerHTML += `<div style="color: var(--red); font-size: 11px;">[HATA]: KONSEY İLE BAĞLANTI KESİLDİ.</div>`;
+                await fetch(webhookURL, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
+                alert("İletildi!"); location.reload();
+            } catch (e) {
+                alert("Bir hata oluştu.");
+                btn.disabled = false; btn.innerText = "GÖNDER";
             }
-
-            btn.disabled = false;
-            btn.innerText = "SOR";
-            display.scrollTop = display.scrollHeight;
         }
-
-        document.getElementById('ai-input').addEventListener('keypress', function (e) {
-            if (e.key === 'Enter') aiSorgu();
-        });
     </script>
 </body>
 </html>
