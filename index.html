@@ -18,21 +18,23 @@
         * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
         body { background: var(--bg); color: white; font-family: 'Inter', sans-serif; overflow-x: hidden; }
 
-        /* --- PRELOADER --- */
+        /* --- YENİ GİRİŞ ANİMASYONU --- */
         #preloader {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: #000; display: flex; justify-content: center; align-items: center;
-            z-index: 9999; transition: opacity 0.8s ease;
+            z-index: 9999; transition: all 1s cubic-bezier(0.19, 1, 0.22, 1);
         }
-        .glitch-wrapper {
+        .reveal-text {
             font-family: 'Syncopate'; font-size: clamp(30px, 8vw, 60px); font-weight: 700;
-            color: white; letter-spacing: 15px; position: relative;
+            color: white; letter-spacing: 20px; text-transform: uppercase;
+            animation: reveal 1.5s ease-in-out forwards;
+            opacity: 0; transform: scale(1.2);
         }
-        .glitch-wrapper::before, .glitch-wrapper::after { content: 'BEDDUA'; position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
-        .glitch-wrapper::before { color: var(--red); left: 2px; text-shadow: -2px 0 var(--red); clip: rect(44px, 450px, 56px, 0); animation: glitch 2s infinite linear alternate-reverse; }
-        .glitch-wrapper::after { color: #fff; left: -2px; text-shadow: 2px 0 blue; clip: rect(44px, 450px, 56px, 0); animation: glitch 2s infinite linear alternate; }
-        @keyframes glitch { 0% { clip: rect(10px, 9999px, 9px, 0); } 100% { clip: rect(70px, 9999px, 90px, 0); } }
-        .preloader-hidden { opacity: 0; visibility: hidden; }
+        @keyframes reveal {
+            0% { opacity: 0; transform: scale(1.5); filter: blur(20px); }
+            100% { opacity: 1; transform: scale(1); filter: blur(0); }
+        }
+        .preloader-hidden { opacity: 0; visibility: hidden; transform: translateY(-100%); }
 
         /* --- NAVIGATION --- */
         nav {
@@ -51,15 +53,20 @@
             align-items: center; text-align: center; position: relative;
             background: radial-gradient(circle at center, #1a0000 0%, #050505 100%);
         }
-        .hero h1 { font-family: 'Syncopate'; font-size: clamp(50px, 12vw, 120px); letter-spacing: clamp(10px, 3vw, 25px); margin-bottom: 15px; text-shadow: 0 0 30px rgba(255,0,0,0.5); }
-        .hero p { color: #666; letter-spacing: 8px; font-size: clamp(10px, 2vw, 16px); text-transform: uppercase; margin-bottom: 40px; font-weight: 300; }
+        .hero h1 { font-family: 'Syncopate'; font-size: clamp(50px, 12vw, 120px); letter-spacing: clamp(10px, 3vw, 25px); margin-bottom: 15px; }
+        .hero p { color: #666; letter-spacing: 8px; font-size: clamp(10px, 2vw, 16px); text-transform: uppercase; margin-bottom: 40px; }
 
         .btn-main { 
             padding: 22px 60px; background: var(--red); color: white; text-decoration: none;
             font-weight: 900; letter-spacing: 4px; border-radius: 2px; transition: 0.5s;
-            position: relative; overflow: hidden; border: none; cursor: pointer;
+            border: none; cursor: pointer; display: inline-block;
         }
         .btn-main:hover { background: white; color: black; box-shadow: 0 0 50px white; transform: translateY(-3px); }
+
+        /* --- SOSYAL MEDYA BUTONLARI --- */
+        .social-links { margin-top: 25px; display: flex; gap: 30px; justify-content: center; }
+        .social-links a { color: #555; font-size: 24px; transition: 0.3s; }
+        .social-links a:hover { color: var(--red); transform: scale(1.2); filter: drop-shadow(0 0 10px var(--red)); }
 
         /* --- SECTION GENEL --- */
         .container { padding: 120px 10%; position: relative; }
@@ -70,40 +77,32 @@
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; }
         .card { 
             background: var(--card-bg); padding: 60px 40px; border: 1px solid #1a1a1a; 
-            text-align: center; transition: 0.6s; border-radius: 4px; position: relative;
+            text-align: center; transition: 0.6s; border-radius: 4px;
         }
-        .card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 2px; background: var(--red); transform: scaleX(0); transition: 0.4s; }
-        .card:hover { transform: translateY(-15px); border-color: #333; box-shadow: 0 20px 40px rgba(0,0,0,0.5); }
-        .card:hover::before { transform: scaleX(1); }
-        .card i { font-size: 50px; color: var(--red); margin-bottom: 25px; filter: drop-shadow(0 0 10px var(--red)); }
+        .card:hover { transform: translateY(-15px); border-color: var(--red); box-shadow: 0 20px 40px rgba(255,0,0,0.1); }
+        .card i { font-size: 50px; color: var(--red); margin-bottom: 25px; }
         .card h3 { font-family: 'Syncopate'; font-size: 22px; margin-bottom: 10px; color: #fff; }
-        .card .role { color: var(--red); font-size: 11px; font-weight: 900; letter-spacing: 3px; text-transform: uppercase; }
+        .card .role-desc { color: #666; font-size: 12px; line-height: 1.6; margin-top: 10px; font-style: italic; }
 
         /* --- RULES --- */
         .rules-container { max-width: 800px; margin: 0 auto; display: grid; gap: 20px; }
         .rule-item { background: #080808; padding: 30px; border-left: 4px solid var(--red); transition: 0.3s; display: flex; align-items: center; }
         .rule-item:hover { background: #111; transform: translateX(10px); }
-        .rule-num { font-family: 'Syncopate'; font-size: 20px; color: var(--red); margin-right: 25px; min-width: 40px; }
-        .rule-text { font-weight: 500; letter-spacing: 1px; color: #ccc; }
+        .rule-num { font-family: 'Syncopate'; font-size: 20px; color: var(--red); margin-right: 25px; }
 
         /* --- WIDGET & FORM --- */
-        .widget-box { background: #000; border: 1px solid #111; border-radius: 8px; overflow: hidden; box-shadow: 0 0 40px rgba(255,0,0,0.1); }
+        .widget-box { background: #000; border: 1px solid #111; border-radius: 8px; overflow: hidden; }
         .form-box { max-width: 700px; margin: 0 auto; background: #080808; padding: 50px; border: 1px solid #111; }
-        .input-group { margin-bottom: 30px; }
-        .input-group label { display: block; font-size: 11px; color: #555; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 2px; }
-        input, textarea { width: 100%; background: #000; border: 1px solid #222; padding: 18px; color: white; font-family: inherit; transition: 0.3s; border-radius: 0; }
-        input:focus, textarea:focus { border-color: var(--red); outline: none; background: #050505; }
+        input, textarea { width: 100%; background: #000; border: 1px solid #222; padding: 18px; color: white; margin-bottom: 20px; font-family: inherit; }
 
-        footer { padding: 80px 20px; text-align: center; border-top: 1px solid #111; font-size: 11px; color: #333; letter-spacing: 5px; text-transform: uppercase; }
+        footer { padding: 80px 20px; text-align: center; border-top: 1px solid #111; font-size: 11px; color: #333; letter-spacing: 5px; }
 
-        /* ARKA PLAN PARÇACIKLARI */
         #particles-js { position: absolute; width: 100%; height: 100%; top: 0; left: 0; z-index: 1; pointer-events: none; }
-        .content-wrap { position: relative; z-index: 2; }
     </style>
 </head>
 <body>
 
-    <div id="preloader"><div class="glitch-wrapper">BEDDUA</div></div>
+    <div id="preloader"><div class="reveal-text">BEDDUA</div></div>
 
     <nav>
         <div class="logo">BEDDUA<span style="color:white">.</span></div>
@@ -112,106 +111,106 @@
             <a href="#founders">Founders</a>
             <a href="#rules">Rules</a>
             <a href="#live">Live</a>
-            <a href="#join">Join Us</a>
+            <a href="#join">Join</a>
         </div>
     </nav>
 
     <section class="hero" id="home">
         <div id="particles-js"></div>
-        <div class="content-wrap">
+        <div style="position: relative; z-index: 2;">
             <h1>BEDDUA</h1>
-            <p>Mutlak Sadakat, Ebedi Güç.</p>
-            <a href="#join" class="btn-join btn-main">KLANA BAŞVUR</a>
+            <p>Sarsılmaz Sadakat, Ebedi Hüküm.</p>
+            <a href="#join" class="btn-main">BAŞVURU YAP</a>
         </div>
     </section>
 
     <div class="container" id="founders">
-        <h2 class="section-title">MANAGEMENT<span>.</span></h2>
+        <h2 class="section-title">YÖNETİM<span>.</span></h2>
         <div class="grid">
-            <div class="card"><i class="fas fa-crown"></i><h3>hsmynova_</h3><span class="role">FOUNDER</span></div>
-            <div class="card"><i class="fas fa-handshake"></i><h3>rolezoffical</h3><span class="role">PARTNER</span></div>
-            <div class="card"><i class="fas fa-shield-alt"></i><h3>naqauel.</h3><span class="role">STRATEGY</span></div>
+            <div class="card">
+                <i class="fas fa-crown"></i>
+                <h3>hsmynova_</h3>
+                <div style="color:red; font-size:10px; font-weight:900; letter-spacing:2px;">FOUNDER</div>
+                <p class="role-desc">Bu kalenin mimarı, Beddua'nın asıl gücü onun vizyonu sayesinde var.</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-handshake"></i>
+                <h3>rolezoffical</h3>
+                <div style="color:red; font-size:10px; font-weight:900; letter-spacing:2px;">PARTNER</div>
+                <p class="role-desc">Sarsılmaz desteği ve ortaklığı sayesinde cephemiz her zaman dik.</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-shield-alt"></i>
+                <h3>naqauel.</h3>
+                <div style="color:red; font-size:10px; font-weight:900; letter-spacing:2px;">STRATEGY</div>
+                <p class="role-desc">Zekası ve planları sayesinde Beddua asla mağlubiyet yüzü görmez.</p>
+            </div>
         </div>
     </div>
 
     <div class="container" id="rules" style="background: #030303;">
-        <h2 class="section-title">THE LAWS<span>.</span></h2>
+        <h2 class="section-title">KANUNLAR<span>.</span></h2>
         <div class="rules-container">
-            <div class="rule-item"><span class="rule-num">01</span><span class="rule-text">Kardeşini savaş meydanında asla arkada bırakma.</span></div>
-            <div class="rule-item"><span class="rule-num">02</span><span class="rule-text">Üst kademedeki emirler tartışmaya kapalıdır.</span></div>
-            <div class="rule-item"><span class="rule-num">03</span><span class="rule-text">Klan içi sırlar mezara kadar gider; ihanetin bedeli ağırdır.</span></div>
-            <div class="rule-item"><span class="rule-num">04</span><span class="rule-text">PvP ve aktiflik klanın damarındaki kandır.</span></div>
+            <div class="rule-item"><span class="rule-num">01</span><span>Klan içi huzur kutsaldır, bozmaya cüret eden bedelini öder.</span></div>
+            <div class="rule-item"><span class="rule-num">02</span><span>Savaş anında emirlere itaat, zaferin anahtarıdır.</span></div>
+            <div class="rule-item"><span class="rule-num">03</span><span>Müttefiklere saygı, düşmana ise acımasız merhamet.</span></div>
         </div>
     </div>
 
     <div class="container" id="live">
-        <h2 class="section-title">LIVE COMMAND<span>.</span></h2>
+        <h2 class="section-title">KOMUTA MERKEZİ<span>.</span></h2>
         <div class="widget-box">
             <widgetbot server="1457837923561898049" channel="1489329848932499478" width="100%" height="600"></widgetbot>
         </div>
     </div>
 
     <div class="container" id="join" style="background: #030303;">
-        <h2 class="section-title">APPLY NOW<span>.</span></h2>
+        <h2 class="section-title">KATILIM<span>.</span></h2>
         <div class="form-box">
-            <div class="input-group"><label>Minecraft Nickname</label><input type="text" id="mcName" placeholder="Oyuncu Adın"></div>
-            <div class="input-group"><label>Discord Tag</label><input type="text" id="discordTag" placeholder="isim#0000"></div>
-            <div class="input-group"><label>Neden Beddua?</label><textarea id="feda" rows="4" placeholder="Klan için neler yapabilirsin?"></textarea></div>
-            <button onclick="klanaBasvur()" class="btn-main" id="sendBtn" style="width:100%;">BAŞVURUYU GÖNDER</button>
+            <input type="text" id="mcName" placeholder="Minecraft Kullanıcı Adı">
+            <input type="text" id="discordTag" placeholder="Discord Adresi">
+            <textarea id="feda" rows="4" placeholder="Beddua için neleri göze alırsın?"></textarea>
+            <button onclick="klanaBasvur()" class="btn-main" id="sendBtn" style="width:100%;">GÖNDER</button>
+            
+            <div class="social-links">
+                <a href="https://discord.gg/pGwxsx2Y" target="_blank" title="Discord"><i class="fab fa-discord"></i></a>
+                <a href="https://www.youtube.com/@Musashi-Miyamato" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
+            </div>
         </div>
     </div>
 
-    <footer>BEDDUA ELITE CLAN &copy; 2026 | BU BİR SON DEĞİL, BAŞLANGIÇ.</footer>
+    <footer>BEDDUA ELITE &copy; 2026 | GÖLGELERİN EFENDİLERİ</footer>
 
     <script src="https://cdn.jsdelivr.net/npm/@widgetbot/html-embed"></script>
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script>
-        // PRELOADER
         window.addEventListener('load', () => {
             setTimeout(() => { document.getElementById('preloader').classList.add('preloader-hidden'); }, 2000);
         });
 
-        // PARTICLES JS (Hero arkasındaki efekt)
         particlesJS('particles-js', {
             "particles": {
-                "number": { "value": 80 },
+                "number": { "value": 60 },
                 "color": { "value": "#ff0000" },
                 "shape": { "type": "circle" },
-                "opacity": { "value": 0.5 },
-                "size": { "value": 3 },
+                "opacity": { "value": 0.4 },
+                "size": { "value": 2 },
                 "line_linked": { "enable": true, "distance": 150, "color": "#ff0000", "opacity": 0.2, "width": 1 },
-                "move": { "enable": true, "speed": 2 }
+                "move": { "enable": true, "speed": 1.5 }
             }
         });
 
-        // FORM WEBHOOK
         async function klanaBasvur() {
             const webhookURL = "https://discord.com/api/webhooks/1490710472113258509/vT_WhugfRkyOTtgpMdLcIKm4zWi9qeVWdPyh0Sbh8pTD9wq4ASMmTis5SXAyWNf7RlCS";
             const mc = document.getElementById('mcName').value;
             const dc = document.getElementById('discordTag').value;
             const feda = document.getElementById('feda').value;
+            if(!mc || !dc || !feda) return alert("Eksik bilgi!");
             const btn = document.getElementById('sendBtn');
-
-            if(!mc || !dc || !feda) return alert("Tüm alanları doldur!");
-
-            btn.disabled = true; btn.innerText = "GÖNDERİLİYOR...";
-
-            const payload = {
-                embeds: [{
-                    title: "🛡️ YENİ KLAN BAŞVURUSU",
-                    color: 16711680,
-                    fields: [
-                        { name: "👤 Oyuncu", value: mc, inline: true },
-                        { name: "🆔 Discord", value: dc, inline: true },
-                        { name: "📝 Mesaj", value: feda }
-                    ],
-                    timestamp: new Date()
-                }]
-            };
-
+            btn.disabled = true; btn.innerText = "İLETİLİYOR...";
+            const payload = { embeds: [{ title: "⚔️ YENİ ADAY!", color: 16711680, fields: [{ name: "👤 MC", value: mc, inline: true }, { name: "🆔 DC", value: dc, inline: true }, { name: "📜 Mesaj", value: feda }] }] };
             await fetch(webhookURL, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
-            alert("Başvurun kuruculara iletildi!");
-            location.reload();
+            alert("Başvurun iletildi!"); location.reload();
         }
     </script>
 </body>
