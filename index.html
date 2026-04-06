@@ -59,7 +59,7 @@
         .hero-content { position: relative; z-index: 10; display: flex; flex-direction: column; align-items: center; }
         .hero h1 { font-family: 'Syncopate'; font-size: clamp(50px, 10vw, 110px); letter-spacing: 20px; margin-bottom: 10px; text-shadow: 0 0 30px var(--red); }
         .hero p { color: #666; letter-spacing: 8px; font-size: 13px; text-transform: uppercase; margin-bottom: 50px; }
-        .btn-hero { padding: 20px 55px; background: var(--red); color: white; text-decoration: none; font-weight: 900; letter-spacing: 4px; transition: 0.5s; margin-bottom: 35px; border: none; cursor: pointer; display: inline-block; text-align: center; }
+        .btn-hero { padding: 20px 55px; background: var(--red); color: white; text-decoration: none; font-weight: 900; letter-spacing: 4px; transition: 0.5s; margin-bottom: 35px; }
         .btn-hero:hover { background: white; color: black; box-shadow: 0 0 50px white; transform: translateY(-5px); }
         .hero-social { display: flex; gap: 30px; }
         .hero-social a { color: #444; font-size: 30px; transition: 0.3s; }
@@ -73,11 +73,11 @@
         /* --- KURALLAR --- */
         .rules-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
         .rule-card { background: #0a0a0a; padding: 35px; border-left: 4px solid var(--red); transition: 0.4s; }
-        .rule-card:hover { background: #111; transform: translateX(10px); border-left-width: 10px; }
+        .rule-card:hover { background: #111; transform: translateX(10px); }
         .rule-card h4 { color: var(--red); font-family: 'Syncopate'; font-size: 14px; margin-bottom: 12px; letter-spacing: 2px; }
         .rule-card p { color: #999; font-size: 13px; line-height: 1.6; font-weight: 600; text-transform: uppercase; }
 
-        /* --- KONSEY --- */
+        /* --- KONSEY (GÜNCELLEME: ÜÇ KURUCU) --- */
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
         .card { background: var(--card-bg); padding: 50px 30px; border: 1px solid #1a1a1a; text-align: center; transition: 0.5s; }
         .card:hover { border-color: var(--red); transform: translateY(-10px); }
@@ -86,10 +86,8 @@
         .card span { color: var(--red); font-size: 10px; font-weight: 900; letter-spacing: 3px; display: block; margin-bottom: 15px; }
         .card p { color: #777; font-size: 13px; font-style: italic; }
 
-        /* --- FORM ELEMENTLERİ --- */
         .form-container { max-width: 600px; margin: 0 auto; background: #0a0a0a; padding: 40px; border: 1px solid #111; }
-        input, textarea { width: 100%; background: #000; border: 1px solid #222; padding: 15px; color: white; margin-bottom: 20px; font-family: inherit; outline: none; }
-        input:focus, textarea:focus { border-color: var(--red); }
+        input, textarea { width: 100%; background: #000; border: 1px solid #222; padding: 15px; color: white; margin-bottom: 20px; font-family: inherit; }
         
         #particles-js { position: absolute; width: 100%; height: 100%; top: 0; left: 0; z-index: 1; pointer-events: none; }
         footer { padding: 50px; text-align: center; font-size: 10px; color: #333; letter-spacing: 4px; border-top: 1px solid #111; }
@@ -159,14 +157,14 @@
             <div class="card">
                 <i class="fas fa-handshake"></i>
                 <h3>rolezoffical</h3>
-                <span>ORTAK</span>
+                <span>KURUCU</span>
                 <p>Onun sarsılmaz sadakati ve ortaklığı sayesinde bu kale her fırtınada ayakta.</p>
             </div>
             <div class="card">
                 <i class="fas fa-shield-alt"></i>
                 <h3>naqauel.</h3>
-                <span>STRATEJİ</span>
-                <p>Onun keskin zekası ve planları sayesinde Beddua için zafer tek seçenektir.</p>
+                <span>KURUCU</span>
+                <p>Keskin zekası ve sarsılmaz bağlılığıyla Beddua'nın temellerini atan kurucu isimlerden biridir.</p>
             </div>
         </div>
     </div>
@@ -209,13 +207,8 @@
             const btn = document.getElementById('sendBtn');
             btn.disabled = true; btn.innerText = "İLETİLİYOR...";
             const payload = { embeds: [{ title: "⚔️ YENİ BAŞVURU", color: 16711680, fields: [{ name: "👤 MC", value: mc, inline: true }, { name: "🆔 DC", value: dc, inline: true }, { name: "📜 Mesaj", value: feda }] }] };
-            try {
-                await fetch(webhookURL, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
-                alert("İletildi!"); location.reload();
-            } catch (e) {
-                alert("Bir hata oluştu.");
-                btn.disabled = false; btn.innerText = "GÖNDER";
-            }
+            await fetch(webhookURL, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
+            alert("İletildi!"); location.reload();
         }
     </script>
 </body>
