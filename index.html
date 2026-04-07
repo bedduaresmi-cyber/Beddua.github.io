@@ -11,46 +11,46 @@
         * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
         body { background: var(--bg); color: white; font-family: 'Inter', sans-serif; overflow-x: hidden; }
 
-        /* --- GLITCH PRELOADER --- */
+        /* --- PRELOADER --- */
         #preloader { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000; display: flex; justify-content: center; align-items: center; z-index: 9999; transition: opacity 0.8s ease; }
         .glitch-wrapper { font-family: 'Syncopate'; font-size: clamp(30px, 8vw, 60px); font-weight: 700; color: white; letter-spacing: 20px; text-transform: uppercase; position: relative; }
         .glitch-wrapper::before { content: 'BEDDUA'; position: absolute; top: 0; left: 2px; width: 100%; color: var(--red); text-shadow: -2px 0 var(--red); clip: rect(44px, 450px, 56px, 0); animation: glitch 2s infinite linear alternate-reverse; }
         @keyframes glitch { 0% { clip: rect(10px, 9999px, 9px, 0); } 100% { clip: rect(70px, 9999px, 90px, 0); } }
         .preloader-hidden { opacity: 0; visibility: hidden; }
 
-        /* --- NAV --- */
         nav { position: fixed; top: 0; width: 100%; padding: 25px 8%; display: flex; justify-content: space-between; align-items: center; background: linear-gradient(to bottom, rgba(0,0,0,0.95), transparent); z-index: 1000; }
         .logo { font-family: 'Syncopate'; font-weight: 700; color: var(--red); font-size: 22px; letter-spacing: 4px; }
         .nav-links a { color: #bbb; text-decoration: none; font-size: 11px; letter-spacing: 2px; font-weight: 800; text-transform: uppercase; margin-left: 25px; transition: 0.3s; }
         .nav-links a:hover { color: var(--red); }
-        .btn-discord-nav { border: 1px solid var(--red); padding: 12px 24px; color: white; text-decoration: none; font-size: 11px; font-weight: 900; letter-spacing: 1px; text-transform: uppercase; transition: 0.4s; margin-left: 20px; }
-        .btn-discord-nav:hover { background: var(--red); box-shadow: 0 0 20px var(--red); }
 
-        /* --- HERO --- */
+        /* --- HERO & SÖZ ALANI --- */
         .hero { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; position: relative; background: radial-gradient(circle at center, #150000 0%, #050505 100%); }
-        .hero h1 { font-family: 'Syncopate'; font-size: clamp(50px, 10vw, 110px); letter-spacing: 20px; text-shadow: 0 0 30px var(--red); }
-        .hero p { color: #666; letter-spacing: 8px; font-size: 13px; text-transform: uppercase; margin: 20px 0 50px; }
-        .btn-main { padding: 18px 45px; background: var(--red); color: white; text-decoration: none; font-weight: 900; letter-spacing: 3px; transition: 0.4s; border: none; cursor: pointer; display: inline-block; }
+        .hero h1 { font-family: 'Syncopate'; font-size: clamp(50px, 10vw, 110px); letter-spacing: 20px; text-shadow: 0 0 30px var(--red); margin-bottom: 20px; }
+        
+        .quote-box { border: 1px solid #222; background: rgba(255, 0, 0, 0.03); padding: 25px 40px; max-width: 700px; position: relative; margin-top: 20px; }
+        .quote-box::after { content: 'GÜNÜN KANUNU'; position: absolute; top: -10px; left: 50%; transform: translateX(-50%); background: #050505; padding: 0 15px; color: var(--red); font-family: 'Syncopate'; font-size: 10px; letter-spacing: 3px; font-weight: 900; }
+        #dailyQuote { font-style: italic; color: #aaa; letter-spacing: 2px; font-size: 14px; text-transform: uppercase; line-height: 1.6; }
+
+        .btn-main { margin-top: 40px; padding: 18px 45px; background: var(--red); color: white; text-decoration: none; font-weight: 900; letter-spacing: 3px; transition: 0.4s; border: none; cursor: pointer; display: inline-block; }
         .btn-main:hover { background: white; color: black; box-shadow: 0 0 30px white; transform: translateY(-5px); }
 
-        /* --- SECTIONS --- */
         .container { padding: 80px 10%; position: relative; z-index: 10; }
         .section-title { font-family: 'Syncopate'; text-align: center; font-size: 26px; margin-bottom: 60px; letter-spacing: 12px; }
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
         
-        .card { background: var(--card-bg); padding: 50px 30px; border: 1px solid #1a1a1a; text-align: center; transition: 0.5s; }
+        .card { background: var(--card-bg); padding: 40px 30px; border: 1px solid #1a1a1a; text-align: center; transition: 0.5s; }
         .card:hover { border-color: var(--red); transform: translateY(-10px); }
         .card i { font-size: 40px; color: var(--red); margin-bottom: 20px; }
-        .card p { color: #777; font-size: 13px; font-style: italic; margin-top: 10px; line-height: 1.6; }
+        .card h3 { font-family: 'Syncopate'; font-size: 18px; }
+        .card span { color: var(--red); font-weight: 900; letter-spacing: 3px; font-size: 11px; display: block; margin-top: 10px; }
+        .card p { color: #666; font-size: 13px; margin-top: 15px; font-style: italic; }
 
         .rule-card { background: #0a0a0a; padding: 35px; border-left: 4px solid var(--red); transition: 0.4s; }
-        .rule-card:hover { background: #111; transform: translateX(10px); border-left-width: 10px; }
-        .rule-card h4 { color: var(--red); font-family: 'Syncopate'; font-size: 14px; margin-bottom: 12px; letter-spacing: 2px; }
-        .rule-card p { color: #999; font-size: 13px; line-height: 1.6; font-weight: 600; text-transform: uppercase; }
+        .rule-card h4 { color: var(--red); font-family: 'Syncopate'; font-size: 14px; margin-bottom: 12px; }
+        .rule-card p { color: #999; font-size: 13px; font-weight: 600; text-transform: uppercase; }
 
         .form-box { max-width: 600px; margin: 0 auto; background: #0a0a0a; padding: 40px; border: 1px solid #1a1a1a; }
         input, textarea { width: 100%; background: #000; border: 1px solid #222; padding: 15px; color: white; margin-bottom: 20px; font-family: inherit; outline: none; }
-        input:focus, textarea:focus { border-color: var(--red); }
 
         #particles-js { position: absolute; width: 100%; height: 100%; top: 0; left: 0; z-index: 1; pointer-events: none; }
         footer { padding: 50px; text-align: center; font-size: 10px; color: #333; letter-spacing: 4px; border-top: 1px solid #111; }
@@ -65,10 +65,8 @@
             <a href="#home">Giriş</a>
             <a href="#kurallar">Kanunlar</a>
             <a href="#konsey">Konsey</a>
-            <a href="#discord">Sohbet</a>
             <a href="#destek">Destek</a>
             <a href="#katil">Katıl</a>
-            <a href="https://discord.gg/ebd9eZQe" target="_blank" class="btn-discord-nav">Discord</a>
         </div>
     </nav>
 
@@ -76,17 +74,19 @@
         <div id="particles-js"></div>
         <div style="z-index: 10;">
             <h1>BEDDUA</h1>
-            <p>Sarsılmaz Sadakat, Ebedi Hüküm.</p>
+            <div class="quote-box">
+                <p id="dailyQuote">YÜKLENİYOR...</p>
+            </div>
             <a href="#katil" class="btn-main">KLANA KATIL</a>
         </div>
     </section>
 
     <div class="container" id="kurallar">
         <h2 class="section-title">KLAN KANUNLARI</h2>
-        <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+        <div class="grid">
             <div class="rule-card"><h4>SADAKAT</h4><p>Dostunu satamazsın. Satarsan ismin tarihten silinir.</p></div>
             <div class="rule-card"><h4>ÜSLUP</h4><p>Küfür kesinlikle yasaktır. Dilin Beddua'nın ağırlığını taşımalıdır.</p></div>
-            <div class="rule-card"><h4>KARDEŞLİK</h4><p>Klan içi PVP yasaktır. Kılıcın dosta değil, düşmana kalkar.</p></div>
+            <div class="rule-card"><h4>KARDEŞLİK</h4><p>Klan içi PVP yasaktır. Kılıcın dosta değil düşmana kalkar.</p></div>
             <div class="rule-card"><h4>İRTİHAL</h4><p>Klana sövmek doğrudan infaz ve sonsuz sürgün sebebidir.</p></div>
         </div>
     </div>
@@ -94,16 +94,9 @@
     <div class="container" id="konsey">
         <h2 class="section-title">KONSEY</h2>
         <div class="grid">
-            <div class="card"><i class="fas fa-crown"></i><h3>hsmynova_</h3><span style="color:var(--red); font-weight:900; letter-spacing:3px; display:block; margin-bottom:10px;">KURUCU</span><p>Beddua'nın her bir taşı onun vizyonu ve sarsılmaz iradesi sayesinde üst üste konuldu.</p></div>
-            <div class="card"><i class="fas fa-handshake"></i><h3>rolezoffical</h3><span style="color:var(--red); font-weight:900; letter-spacing:3px; display:block; margin-bottom:10px;">KURUCU</span><p>Onun sarsılmaz sadakati ve gücü sayesinde bu kale her fırtınada ayakta.</p></div>
-            <div class="card"><i class="fas fa-shield-alt"></i><h3>naqauel.</h3><span style="color:var(--red); font-weight:900; letter-spacing:3px; display:block; margin-bottom:10px;">KURUCU</span><p>Onun keskin zekası ve planları sayesinde Beddua için zafer tek seçenektir.</p></div>
-        </div>
-    </div>
-
-    <div class="container" id="discord">
-        <h2 class="section-title">CANLI SOHBET</h2>
-        <div style="border: 2px solid #1a1a1a; border-radius:10px; overflow:hidden;">
-            <widgetbot server="1457837923561898049" channel="1489329848932499478" width="100%" height="500"></widgetbot>
+            <div class="card"><i class="fas fa-crown"></i><h3>hsmynova_</h3><span>KURUCU</span><p>Beddua'nın her bir taşı onun vizyonu sayesinde üst üste konuldu.</p></div>
+            <div class="card"><i class="fas fa-handshake"></i><h3>rolezoffical</h3><span>KURUCU</span><p>Onun sarsılmaz sadakati sayesinde bu kale her fırtınada ayakta.</p></div>
+            <div class="card"><i class="fas fa-shield-alt"></i><h3>naqauel.</h3><span>KURUCU</span><p>Onun keskin zekası sayesinde Beddua için zafer tek seçenektir.</p></div>
         </div>
     </div>
 
@@ -111,7 +104,7 @@
         <h2 class="section-title">DESTEK SİSTEMİ</h2>
         <div class="form-box">
             <input type="text" id="suppName" placeholder="Adın / Nickname">
-            <textarea id="suppMsg" rows="4" placeholder="Mesajın nedir?"></textarea>
+            <textarea id="suppMsg" rows="4" placeholder="Sorununuz nedir?"></textarea>
             <button onclick="destekGonder()" class="btn-main" style="width:100%;" id="destekBtn">TALEBİ İLET</button>
         </div>
     </div>
@@ -120,18 +113,30 @@
         <h2 class="section-title">KATILIM</h2>
         <div class="form-box">
             <input type="text" id="mcName" placeholder="Minecraft Nick">
-            <input type="text" id="discordTag" placeholder="Discord Adresin">
-            <textarea id="feda" rows="4" placeholder="Neden Beddua?"></textarea>
-            <button onclick="klanaBasvur()" class="btn-main" style="width:100%;" id="basvuruBtn">GÖNDER</button>
+            <input type="text" id="dcTag" placeholder="Discord Adresi">
+            <textarea id="feda" rows="4" placeholder="Beddua için neleri feda edersin?"></textarea>
+            <button onclick="klanaBasvur()" class="btn-main" style="width:100%;" id="basvuruBtn">BAŞVURUYU GÖNDER</button>
         </div>
     </div>
 
     <footer>BEDDUA ELITE &copy; 2026</footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/@widgetbot/html-embed"></script>
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script>
-        window.addEventListener('load', () => { setTimeout(() => { document.getElementById('preloader').classList.add('preloader-hidden'); }, 2000); });
+        // ############################################################
+        //                      GÜNÜN SÖZÜ BURADA!
+        //       AŞAĞIDAKİ TIRNAK İÇİNDEKİ YAZIYI DEĞİŞTİRMEN YETERLİ
+        // ############################################################
+        
+        const GUNUN_SOZU = "Adalet Beddua'nın kılıcında, huzur ise gölgesindedir.";
+        
+        // ############################################################
+
+        window.addEventListener('load', () => { 
+            setTimeout(() => { document.getElementById('preloader').classList.add('preloader-hidden'); }, 1500);
+            document.getElementById('dailyQuote').innerText = GUNUN_SOZU;
+        });
+
         particlesJS('particles-js', { "particles": { "number": { "value": 40 }, "color": { "value": "#ff0000" }, "opacity": { "value": 0.2 }, "size": { "value": 2 }, "line_linked": { "enable": true, "distance": 150, "color": "#ff0000", "opacity": 0.1, "width": 1 }, "move": { "enable": true, "speed": 1 } } });
 
         const BA_WH = "https://discord.com/api/webhooks/1490710472113258509/vT_WhugfRkyOTtgpMdLcIKm4zWi9qeVWdPyh0Sbh8pTD9wq4ASMmTis5SXAyWNf7RlCS";
@@ -139,23 +144,21 @@
 
         async function klanaBasvur() {
             const mc = document.getElementById('mcName').value;
-            const dc = document.getElementById('discordTag').value;
+            const dc = document.getElementById('dcTag').value;
             const msg = document.getElementById('feda').value;
-            if(!mc || !dc || !msg) return alert("Boş bırakma!");
-            const btn = document.getElementById('basvuruBtn'); btn.disabled = true;
+            if(!mc || !dc || !msg) return alert("Eksik bilgi!");
             const payload = { embeds: [{ title: "⚔️ BAŞVURU", color: 16711680, fields: [{name:"👤 MC", value:mc}, {name:"🆔 DC", value:dc}, {name:"📜 Mesaj", value:msg}] }] };
             await fetch(BA_WH, { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(payload) });
-            alert("İletildi!"); location.reload();
+            alert("İletildi."); location.reload();
         }
 
         async function destekGonder() {
             const name = document.getElementById('suppName').value;
             const msg = document.getElementById('suppMsg').value;
-            if(!name || !msg) return alert("Boş bırakma!");
-            const btn = document.getElementById('destekBtn'); btn.disabled = true;
-            const payload = { embeds: [{ title: "🛠️ DESTEK", color: 3447003, fields: [{name:"👤 Gönderen", value:name}, {name:"💬 Mesaj", value:msg}] }] };
+            if(!name || !msg) return alert("Eksik bilgi!");
+            const payload = { embeds: [{ title: "🛠️ DESTEK", color: 16776960, fields: [{name:"👤 Gönderen", value:name}, {name:"💬 Mesaj", value:msg}] }] };
             await fetch(DE_WH, { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(payload) });
-            alert("Destek İletildi!"); location.reload();
+            alert("Talebiniz iletildi."); location.reload();
         }
     </script>
 </body>
