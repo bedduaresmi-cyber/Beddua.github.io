@@ -23,6 +23,8 @@
         .logo { font-family: 'Syncopate'; font-weight: 700; color: var(--red); font-size: 22px; letter-spacing: 4px; }
         .nav-links a { color: #bbb; text-decoration: none; font-size: 11px; letter-spacing: 2px; font-weight: 800; text-transform: uppercase; margin-left: 25px; transition: 0.3s; }
         .nav-links a:hover { color: var(--red); }
+        .btn-discord-nav { border: 1px solid var(--red); padding: 12px 24px; color: white; text-decoration: none; font-size: 11px; font-weight: 900; letter-spacing: 1px; text-transform: uppercase; transition: 0.4s; margin-left: 20px; }
+        .btn-discord-nav:hover { background: var(--red); box-shadow: 0 0 20px var(--red); }
 
         /* --- HERO --- */
         .hero { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; position: relative; background: radial-gradient(circle at center, #150000 0%, #050505 100%); }
@@ -50,6 +52,7 @@
 </head>
 <body>
     <div id="preloader"><div class="glitch-wrapper">BEDDUA</div></div>
+    
     <nav>
         <div class="logo">BEDDUA</div>
         <div class="nav-links">
@@ -59,6 +62,7 @@
             <a href="#discord">Sohbet</a>
             <a href="#destek">Destek</a>
             <a href="#katil">Katıl</a>
+            <a href="https://discord.gg/ebd9eZQe" target="_blank" class="btn-discord-nav">Discord'a Katıl</a>
         </div>
     </nav>
 
@@ -81,6 +85,10 @@
             <div style="background:#0a0a0a; padding:30px; border-left:4px solid var(--red);">
                 <h4 style="color:var(--red); font-family:'Syncopate'; font-size:14px;">ÜSLUP</h4>
                 <p style="color:#999; font-size:12px; text-transform:uppercase; margin-top:10px;">Küfür yasaktır. Dilin Beddua'nın ağırlığını taşımalıdır.</p>
+            </div>
+            <div style="background:#0a0a0a; padding:30px; border-left:4px solid var(--red);">
+                <h4 style="color:var(--red); font-family:'Syncopate'; font-size:14px;">KARDEŞLİK</h4>
+                <p style="color:#999; font-size:12px; text-transform:uppercase; margin-top:10px;">Klan içi PVP yasaktır. Kılıcın dosta değil düşmana kalkar.</p>
             </div>
         </div>
     </div>
@@ -106,7 +114,7 @@
         <div class="form-box">
             <input type="text" id="suppName" placeholder="Adın Soyadın / Nickname">
             <textarea id="suppMsg" rows="4" placeholder="Sorunun veya talebin nedir?"></textarea>
-            <button onclick="destekGonder()" class="btn-main" style="width:100%;">TALEBİ İLET</button>
+            <button onclick="destekGonder()" class="btn-main" style="width:100%;" id="destekBtn">TALEBİ İLET</button>
         </div>
     </div>
 
@@ -115,12 +123,12 @@
         <div class="form-box">
             <input type="text" id="mcName" placeholder="Minecraft Nickname">
             <input type="text" id="dcTag" placeholder="Discord Adresin">
-            <textarea id="feda" rows="4" placeholder="Neden Beddua?"></textarea>
-            <button onclick="klanaBasvur()" class="btn-main" style="width:100%;">BAŞVUR</button>
+            <textarea id="feda" rows="4" placeholder="Beddua için neleri feda edersin?"></textarea>
+            <button onclick="klanaBasvur()" class="btn-main" style="width:100%;" id="basvuruBtn">BAŞVUR</button>
         </div>
     </div>
 
-    <footer>BEDDUA ELITE &copy; 2026</footer>
+    <footer>BEDDUA ELITE &copy; 2026 | GÖLGELER SENİ HATIRLAYACAK</footer>
 
     <script src="https://cdn.jsdelivr.net/npm/@widgetbot/html-embed"></script>
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
@@ -128,15 +136,20 @@
         window.addEventListener('load', () => { setTimeout(() => { document.getElementById('preloader').classList.add('preloader-hidden'); }, 2000); });
         particlesJS('particles-js', { "particles": { "number": { "value": 40 }, "color": { "value": "#ff0000" }, "opacity": { "value": 0.2 }, "size": { "value": 2 }, "line_linked": { "enable": true, "distance": 150, "color": "#ff0000", "opacity": 0.1, "width": 1 }, "move": { "enable": true, "speed": 1 } } });
 
-        const WH = "https://discord.com/api/webhooks/1490710472113258509/vT_WhugfRkyOTtgpMdLcIKm4zWi9qeVWdPyh0Sbh8pTD9wq4ASMmTis5SXAyWNf7RlCS";
+        const BA_WH = "https://discord.com/api/webhooks/1490710472113258509/vT_WhugfRkyOTtgpMdLcIKm4zWi9qeVWdPyh0Sbh8pTD9wq4ASMmTis5SXAyWNf7RlCS";
+        const DE_WH = "https://discord.com/api/webhooks/1490661782291746877/BeRBuYuXDkU94LFQSI-mqEw9BOau0Lcv6nGku6R_yODg_7AZ7Jt2ecIq3IFK8UPJlMzG";
 
         async function klanaBasvur() {
             const mc = document.getElementById('mcName').value;
             const dc = document.getElementById('dcTag').value;
             const msg = document.getElementById('feda').value;
             if(!mc || !dc || !msg) return alert("Boş bırakma!");
-            const payload = { embeds: [{ title: "⚔️ YENİ BAŞVURU", color: 16711680, fields: [{name:"👤 MC", value:mc, inline:true}, {name:"🆔 DC", value:dc, inline:true}, {name:"📜 Mesaj", value:msg}] }] };
-            await fetch(WH, { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(payload) });
+            
+            const btn = document.getElementById('basvuruBtn');
+            btn.disabled = true; btn.innerText = "İLETİLİYOR...";
+
+            const payload = { embeds: [{ title: "⚔️ YENİ BAŞVURU", color: 16711680, fields: [{name:"👤 MC Nick", value:mc, inline:true}, {name:"🆔 Discord", value:dc, inline:true}, {name:"📜 Mesaj", value:msg}] }] };
+            await fetch(BA_WH, { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(payload) });
             alert("Başvuru İletildi!"); location.reload();
         }
 
@@ -144,8 +157,12 @@
             const name = document.getElementById('suppName').value;
             const msg = document.getElementById('suppMsg').value;
             if(!name || !msg) return alert("Boş bırakma!");
-            const payload = { embeds: [{ title: "🛠️ YENİ DESTEK TALEBİ", color: 255, fields: [{name:"👤 Gönderen", value:name}, {name:"💬 Mesaj", value:msg}] }] };
-            await fetch(WH, { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(payload) });
+
+            const btn = document.getElementById('destekBtn');
+            btn.disabled = true; btn.innerText = "GÖNDERİLİYOR...";
+
+            const payload = { embeds: [{ title: "🛠️ YENİ DESTEK TALEBİ", color: 3447003, fields: [{name:"👤 Gönderen", value:name}, {name:"💬 Mesaj", value:msg}] }] };
+            await fetch(DE_WH, { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(payload) });
             alert("Destek Talebi İletildi!"); location.reload();
         }
     </script>
