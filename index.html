@@ -37,11 +37,17 @@
         .container { padding: 80px 10%; position: relative; z-index: 10; }
         .section-title { font-family: 'Syncopate'; text-align: center; font-size: 26px; margin-bottom: 60px; letter-spacing: 12px; }
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        
         .card { background: var(--card-bg); padding: 50px 30px; border: 1px solid #1a1a1a; text-align: center; transition: 0.5s; }
         .card:hover { border-color: var(--red); transform: translateY(-10px); }
         .card i { font-size: 40px; color: var(--red); margin-bottom: 20px; }
+        .card p { color: #777; font-size: 13px; font-style: italic; margin-top: 10px; line-height: 1.6; }
 
-        /* --- FORMS --- */
+        .rule-card { background: #0a0a0a; padding: 35px; border-left: 4px solid var(--red); transition: 0.4s; }
+        .rule-card:hover { background: #111; transform: translateX(10px); border-left-width: 10px; }
+        .rule-card h4 { color: var(--red); font-family: 'Syncopate'; font-size: 14px; margin-bottom: 12px; letter-spacing: 2px; }
+        .rule-card p { color: #999; font-size: 13px; line-height: 1.6; font-weight: 600; text-transform: uppercase; }
+
         .form-box { max-width: 600px; margin: 0 auto; background: #0a0a0a; padding: 40px; border: 1px solid #1a1a1a; }
         input, textarea { width: 100%; background: #000; border: 1px solid #222; padding: 15px; color: white; margin-bottom: 20px; font-family: inherit; outline: none; }
         input:focus, textarea:focus { border-color: var(--red); }
@@ -62,7 +68,7 @@
             <a href="#discord">Sohbet</a>
             <a href="#destek">Destek</a>
             <a href="#katil">Katıl</a>
-            <a href="https://discord.gg/ebd9eZQe" target="_blank" class="btn-discord-nav">Discord'a Katıl</a>
+            <a href="https://discord.gg/ebd9eZQe" target="_blank" class="btn-discord-nav">Discord</a>
         </div>
     </nav>
 
@@ -77,34 +83,26 @@
 
     <div class="container" id="kurallar">
         <h2 class="section-title">KLAN KANUNLARI</h2>
-        <div class="grid">
-            <div style="background:#0a0a0a; padding:30px; border-left:4px solid var(--red);">
-                <h4 style="color:var(--red); font-family:'Syncopate'; font-size:14px;">SADAKAT</h4>
-                <p style="color:#999; font-size:12px; text-transform:uppercase; margin-top:10px;">Dostunu satamazsın. Satarsan ismin tarihten silinir.</p>
-            </div>
-            <div style="background:#0a0a0a; padding:30px; border-left:4px solid var(--red);">
-                <h4 style="color:var(--red); font-family:'Syncopate'; font-size:14px;">ÜSLUP</h4>
-                <p style="color:#999; font-size:12px; text-transform:uppercase; margin-top:10px;">Küfür yasaktır. Dilin Beddua'nın ağırlığını taşımalıdır.</p>
-            </div>
-            <div style="background:#0a0a0a; padding:30px; border-left:4px solid var(--red);">
-                <h4 style="color:var(--red); font-family:'Syncopate'; font-size:14px;">KARDEŞLİK</h4>
-                <p style="color:#999; font-size:12px; text-transform:uppercase; margin-top:10px;">Klan içi PVP yasaktır. Kılıcın dosta değil düşmana kalkar.</p>
-            </div>
+        <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+            <div class="rule-card"><h4>SADAKAT</h4><p>Dostunu satamazsın. Satarsan ismin tarihten silinir.</p></div>
+            <div class="rule-card"><h4>ÜSLUP</h4><p>Küfür kesinlikle yasaktır. Dilin Beddua'nın ağırlığını taşımalıdır.</p></div>
+            <div class="rule-card"><h4>KARDEŞLİK</h4><p>Klan içi PVP yasaktır. Kılıcın dosta değil, düşmana kalkar.</p></div>
+            <div class="rule-card"><h4>İRTİHAL</h4><p>Klana sövmek doğrudan infaz ve sonsuz sürgün sebebidir.</p></div>
         </div>
     </div>
 
     <div class="container" id="konsey">
         <h2 class="section-title">KONSEY</h2>
         <div class="grid">
-            <div class="card"><i class="fas fa-crown"></i><h3>hsmynova_</h3><span style="color:var(--red); font-weight:900; letter-spacing:3px;">KURUCU</span></div>
-            <div class="card"><i class="fas fa-handshake"></i><h3>rolezoffical</h3><span style="color:var(--red); font-weight:900; letter-spacing:3px;">KURUCU</span></div>
-            <div class="card"><i class="fas fa-shield-alt"></i><h3>naqauel.</h3><span style="color:var(--red); font-weight:900; letter-spacing:3px;">KURUCU</span></div>
+            <div class="card"><i class="fas fa-crown"></i><h3>hsmynova_</h3><span style="color:var(--red); font-weight:900; letter-spacing:3px; display:block; margin-bottom:10px;">KURUCU</span><p>Beddua'nın her bir taşı onun vizyonu ve sarsılmaz iradesi sayesinde üst üste konuldu.</p></div>
+            <div class="card"><i class="fas fa-handshake"></i><h3>rolezoffical</h3><span style="color:var(--red); font-weight:900; letter-spacing:3px; display:block; margin-bottom:10px;">KURUCU</span><p>Onun sarsılmaz sadakati ve gücü sayesinde bu kale her fırtınada ayakta.</p></div>
+            <div class="card"><i class="fas fa-shield-alt"></i><h3>naqauel.</h3><span style="color:var(--red); font-weight:900; letter-spacing:3px; display:block; margin-bottom:10px;">KURUCU</span><p>Onun keskin zekası ve planları sayesinde Beddua için zafer tek seçenektir.</p></div>
         </div>
     </div>
 
     <div class="container" id="discord">
         <h2 class="section-title">CANLI SOHBET</h2>
-        <div style="border: 1px solid #222; border-radius:10px; overflow:hidden;">
+        <div style="border: 2px solid #1a1a1a; border-radius:10px; overflow:hidden;">
             <widgetbot server="1457837923561898049" channel="1489329848932499478" width="100%" height="500"></widgetbot>
         </div>
     </div>
@@ -112,23 +110,23 @@
     <div class="container" id="destek">
         <h2 class="section-title">DESTEK SİSTEMİ</h2>
         <div class="form-box">
-            <input type="text" id="suppName" placeholder="Adın Soyadın / Nickname">
-            <textarea id="suppMsg" rows="4" placeholder="Sorunun veya talebin nedir?"></textarea>
+            <input type="text" id="suppName" placeholder="Adın / Nickname">
+            <textarea id="suppMsg" rows="4" placeholder="Mesajın nedir?"></textarea>
             <button onclick="destekGonder()" class="btn-main" style="width:100%;" id="destekBtn">TALEBİ İLET</button>
         </div>
     </div>
 
     <div class="container" id="katil">
-        <h2 class="section-title">KLANA KATIL</h2>
+        <h2 class="section-title">KATILIM</h2>
         <div class="form-box">
-            <input type="text" id="mcName" placeholder="Minecraft Nickname">
-            <input type="text" id="dcTag" placeholder="Discord Adresin">
-            <textarea id="feda" rows="4" placeholder="Beddua için neleri feda edersin?"></textarea>
-            <button onclick="klanaBasvur()" class="btn-main" style="width:100%;" id="basvuruBtn">BAŞVUR</button>
+            <input type="text" id="mcName" placeholder="Minecraft Nick">
+            <input type="text" id="discordTag" placeholder="Discord Adresin">
+            <textarea id="feda" rows="4" placeholder="Neden Beddua?"></textarea>
+            <button onclick="klanaBasvur()" class="btn-main" style="width:100%;" id="basvuruBtn">GÖNDER</button>
         </div>
     </div>
 
-    <footer>BEDDUA ELITE &copy; 2026 | GÖLGELER SENİ HATIRLAYACAK</footer>
+    <footer>BEDDUA ELITE &copy; 2026</footer>
 
     <script src="https://cdn.jsdelivr.net/npm/@widgetbot/html-embed"></script>
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
@@ -141,29 +139,23 @@
 
         async function klanaBasvur() {
             const mc = document.getElementById('mcName').value;
-            const dc = document.getElementById('dcTag').value;
+            const dc = document.getElementById('discordTag').value;
             const msg = document.getElementById('feda').value;
             if(!mc || !dc || !msg) return alert("Boş bırakma!");
-            
-            const btn = document.getElementById('basvuruBtn');
-            btn.disabled = true; btn.innerText = "İLETİLİYOR...";
-
-            const payload = { embeds: [{ title: "⚔️ YENİ BAŞVURU", color: 16711680, fields: [{name:"👤 MC Nick", value:mc, inline:true}, {name:"🆔 Discord", value:dc, inline:true}, {name:"📜 Mesaj", value:msg}] }] };
+            const btn = document.getElementById('basvuruBtn'); btn.disabled = true;
+            const payload = { embeds: [{ title: "⚔️ BAŞVURU", color: 16711680, fields: [{name:"👤 MC", value:mc}, {name:"🆔 DC", value:dc}, {name:"📜 Mesaj", value:msg}] }] };
             await fetch(BA_WH, { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(payload) });
-            alert("Başvuru İletildi!"); location.reload();
+            alert("İletildi!"); location.reload();
         }
 
         async function destekGonder() {
             const name = document.getElementById('suppName').value;
             const msg = document.getElementById('suppMsg').value;
             if(!name || !msg) return alert("Boş bırakma!");
-
-            const btn = document.getElementById('destekBtn');
-            btn.disabled = true; btn.innerText = "GÖNDERİLİYOR...";
-
-            const payload = { embeds: [{ title: "🛠️ YENİ DESTEK TALEBİ", color: 3447003, fields: [{name:"👤 Gönderen", value:name}, {name:"💬 Mesaj", value:msg}] }] };
+            const btn = document.getElementById('destekBtn'); btn.disabled = true;
+            const payload = { embeds: [{ title: "🛠️ DESTEK", color: 3447003, fields: [{name:"👤 Gönderen", value:name}, {name:"💬 Mesaj", value:msg}] }] };
             await fetch(DE_WH, { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(payload) });
-            alert("Destek Talebi İletildi!"); location.reload();
+            alert("Destek İletildi!"); location.reload();
         }
     </script>
 </body>
